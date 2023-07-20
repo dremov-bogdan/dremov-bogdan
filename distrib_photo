@@ -26,11 +26,12 @@ for j in start_foto:
     #В этот список льются фото
     number_photo = []
     #Плюсуем один, чтобы захватить послюднюю фотку
+
     for photo in range(delta + 1):
         #Цифра фотографии
         name_photo = int(j + photo)
+        #Название фотографии заливаем в список
         if name_photo < 100:
-            #Название фотографии заливаем в список
             number_photo.append(f"DSC_00{name_photo}")
         elif name_photo >= 100: 
             number_photo.append(f"DSC_0{name_photo}")    
