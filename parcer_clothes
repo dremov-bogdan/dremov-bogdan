@@ -46,7 +46,7 @@ def array():
 
 #Записываем данные в Excel
 def writer(parametr):
-    book = xlsxwriter.Workbook(r"C:\Users\Алиса\Desktop\projectpy\parcer_clothes.xlsx")
+    book = xlsxwriter.Workbook(r"C:\Users\Desktop\projectpy\parcer_clothes.xlsx")
     page = book.add_worksheet('товар')
 
     row = 0
