@@ -1,0 +1,45 @@
+import pandas as pd
+import os
+import shutil
+from os import path
+
+#Получаем списки
+spisok = pd.read_excel('C:/Users/Desktop/fio.xlsx')
+#Вычисляемый столбец - количество фото у человека
+spisok['quantity'] = spisok.end - spisok.start
+
+#СОЗДАЕМ ПАПКИ
+name = list(spisok['fio'])
+for i in name:
+    os.mkdir('C:\Users\Desktop\photo_file\' + i)
+
+#ПОЛУЧЕНИЯ СПИСКА ФОТО ДЛЯ РАСКИДКИ
+
+start_foto = spisok["start"]
+#Показывает количество итераций, из него возьмем индекс для получения дельты
+total = 0
+#В j номер первой фото человека, дальше из нее разворачиваем список
+for j in start_foto:
+    #Получаем количество фото, для формирования списка
+    delta = int(spisok.iloc[total,3])
+    name_file = str(spisok.iloc[total,0])
+    #В этот список льются фото
+    number_photo = []
+    #Плюсуем один, чтобы захватить послюднюю фотку
+    for photo in range(delta + 1):
+        #Цифра фотографии
+        name_photo = int(j + photo)
+        if name_photo < 100:
+            #Название фотографии заливаем в список
+            number_photo.append(f"DSC_00{name_photo}")
+        elif name_photo >= 100: 
+            number_photo.append(f"DSC_0{name_photo}")    
+    
+#ПЕРЕМЕЩЕНИЕ ПО ПАПКАМ
+
+    for move_photo in number_photo:
+        #Добавляем р чтобы сделать необработанную строку
+        source_path = rf"C:\Users\Desktop\photo_file\{move_photo}.JPG"
+        destination_path = rf"C:\Users\Desktop\photo_file\{name_file}"
+        new_location = shutil.copy(source_path, destination_path)
+    total += 1
