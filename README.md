@@ -1,6 +1,6 @@
 - 👋 Hi, I’m @dremov-bogdan
 - 👀 I’m interested in data analysis
-- 🌱 I’m currently learning python, scala
+- 🌱 I’m currently learning python, scala, sql
 - 📫 How to reach me dremovb@mail.ru
 
 <!---
